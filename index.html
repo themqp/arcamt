@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Muhammad Tijani Abubakar | Architect & Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1612;
+    --clay: #b5693a;
+    --sand: #d4c5a9;
+    --warm-grey: #8a7f72;
+    --deep: #2c2318;
+    --accent: #c0813f;
+    --light-clay: #e8d5c0;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Cormorant Garamond', serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 3rem;
+    background: rgba(245,240,232,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--sand);
+  }
+  .nav-logo { font-family: 'Space Mono', monospace; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); }
+  .nav-links { display: flex; gap: 2.4rem; list-style: none; }
+  .nav-links a { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-grey); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--clay); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr;
+    padding-top: 80px; position: relative; overflow: hidden;
+  }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg,transparent,transparent 59px,rgba(181,105,58,0.06) 59px,rgba(181,105,58,0.06) 60px),
+                repeating-linear-gradient(90deg,transparent,transparent 59px,rgba(181,105,58,0.06) 59px,rgba(181,105,58,0.06) 60px);
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 4rem 5rem 5rem; position: relative; z-index: 2;
+  }
+  .hero-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.6rem; animation: fadeUp 0.8s 0.2s ease both; }
+  .hero-name { font-size: clamp(3.2rem, 5.5vw, 5.8rem); font-weight: 300; line-height: 1.02; color: var(--ink); animation: fadeUp 0.9s 0.4s ease both; }
+  .hero-name em { font-style: italic; color: var(--clay); }
+  .hero-divider { width: 60px; height: 1px; background: var(--clay); margin: 2.4rem 0; animation: expandLine 0.8s 0.7s ease both; }
+  .hero-tagline { font-size: 1.35rem; font-weight: 300; line-height: 1.6; color: var(--warm-grey); max-width: 440px; animation: fadeUp 0.9s 0.8s ease both; }
+  .hero-creds { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 2.4rem; animation: fadeUp 0.9s 1s ease both; }
+  .cred-tag { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.38rem 0.9rem; border: 1px solid var(--clay); color: var(--clay); }
+  .hero-right { position: relative; overflow: hidden; background: var(--deep); }
+  .hero-right svg { width: 100%; height: 100%; display: block; animation: fadeIn 1.2s 0.5s ease both; }
+  .hero-bottom { position: absolute; bottom: 3rem; left: 5rem; z-index: 3; animation: fadeUp 0.9s 1.2s ease both; }
+  .scroll-hint { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--warm-grey); display: flex; align-items: center; gap: 1rem; }
+  .scroll-hint::after { content: ''; width: 40px; height: 1px; background: var(--warm-grey); display: inline-block; }
+
+  /* SECTIONS */
+  .section { padding: 8rem 5rem; }
+  .section-label { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.2rem; }
+
+  /* ABOUT */
+  .about { background: var(--deep); color: var(--cream); }
+  .about .section-label { color: var(--accent); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+  .about h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.15; margin-bottom: 2rem; }
+  .about h2 em { font-style: italic; color: var(--accent); }
+  .about p { font-size: 1.2rem; font-weight: 300; line-height: 1.8; color: var(--sand); margin-bottom: 1.5rem; }
+  .stat-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08); margin-bottom: 3rem; }
+  .stat-item { padding: 2rem; background: rgba(255,255,255,0.02); }
+  .stat-num { font-size: 2.8rem; font-weight: 300; color: var(--accent); line-height: 1; margin-bottom: 0.4rem; }
+  .stat-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--warm-grey); }
+  .expertise-list { list-style: none; }
+  .expertise-list li { padding: 1.1rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); display: flex; align-items: center; gap: 1.2rem; font-size: 1.1rem; font-weight: 300; color: var(--sand); }
+  .expertise-list li::before { content: '→'; color: var(--accent); font-family: 'Space Mono', monospace; font-size: 0.7rem; flex-shrink: 0; }
+
+  /* PORTFOLIO */
+  .portfolio { background: var(--cream); }
+  .portfolio h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; margin-bottom: 4rem; line-height: 1.15; }
+  .portfolio h2 em { font-style: italic; color: var(--clay); }
+  .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .project-card { position: relative; overflow: hidden; cursor: pointer; background: var(--deep); }
+  .project-card:nth-child(1) { grid-column: 1 / 3; }
+  .project-card:nth-child(4) { grid-column: 2 / 4; }
+  .project-card svg { width: 100%; display: block; transition: transform 0.7s ease, filter 0.5s ease; filter: brightness(0.9); }
+  .project-card:hover svg { transform: scale(1.04); filter: brightness(0.55); }
+  .project-always-visible { position: absolute; bottom: 0; left: 0; right: 0; padding: 1.4rem 2rem; background: linear-gradient(to top, rgba(26,22,18,0.9) 0%, transparent 100%); }
+  .project-title { font-size: 1.1rem; font-weight: 400; color: var(--cream); line-height: 1.3; }
+  .project-type { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.3rem; }
+  .project-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; background: linear-gradient(to top, rgba(26,22,18,0.97) 0%, transparent 100%); transform: translateY(30px); opacity: 0; transition: all 0.4s ease; }
+  .project-card:hover .project-info { transform: translateY(0); opacity: 1; }
+  .project-desc { font-size: 0.95rem; font-weight: 300; color: var(--sand); line-height: 1.6; margin-top: 0.5rem; }
+
+  /* EXPERIENCE */
+  .experience { background: var(--light-clay); }
+  .experience h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; margin-bottom: 4rem; line-height: 1.15; }
+  .experience h2 em { font-style: italic; color: var(--clay); }
+  .timeline { position: relative; padding-left: 3rem; border-left: 1px solid var(--clay); }
+  .timeline-item { padding: 0 0 3.5rem 3rem; position: relative; }
+  .timeline-item::before { content: ''; position: absolute; left: -5px; top: 6px; width: 9px; height: 9px; border-radius: 50%; background: var(--clay); }
+  .timeline-period { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.5rem; }
+  .timeline-role { font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 0.2rem; }
+  .timeline-company { font-size: 1rem; font-weight: 300; font-style: italic; color: var(--warm-grey); margin-bottom: 1rem; }
+  .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .timeline-bullets li { font-size: 1rem; font-weight: 300; line-height: 1.6; color: var(--ink); padding-left: 1.2rem; position: relative; }
+  .timeline-bullets li::before { content: '–'; position: absolute; left: 0; color: var(--clay); }
+
+  /* SKILLS */
+  .skills { background: var(--ink); }
+  .skills .section-label { color: var(--accent); }
+  .skills h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; color: var(--cream); margin-bottom: 4rem; line-height: 1.15; }
+  .skills h2 em { font-style: italic; color: var(--accent); }
+  .skills-layout { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; }
+  .skill-group h3 { font-family: 'Space Mono', monospace; font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); margin-bottom: 1.5rem; padding-bottom: 0.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .skill-tag { font-size: 0.95rem; font-weight: 300; color: var(--sand); padding: 0.4rem 0.9rem; border: 1px solid rgba(255,255,255,0.12); transition: border-color 0.2s, color 0.2s; cursor: default; }
+  .skill-tag:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* EDUCATION */
+  .education { background: var(--cream); }
+  .education h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; margin-bottom: 4rem; line-height: 1.15; }
+  .education h2 em { font-style: italic; color: var(--clay); }
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+  .edu-card { padding: 2.5rem; border: 1px solid var(--sand); background: white; transition: box-shadow 0.3s; position: relative; }
+  .edu-card:hover { box-shadow: 6px 6px 0 var(--clay); }
+  .edu-badge { font-family: 'Space Mono', monospace; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: white; background: var(--clay); padding: 0.25rem 0.7rem; display: inline-block; margin-bottom: 1rem; }
+  .edu-degree { font-size: 1.25rem; font-weight: 400; color: var(--ink); line-height: 1.3; margin-bottom: 0.6rem; }
+  .edu-school { font-size: 1rem; font-weight: 300; font-style: italic; color: var(--clay); margin-bottom: 0.4rem; }
+  .edu-detail { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.1em; color: var(--warm-grey); }
+  .cert-list { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--sand); }
+  .cert-list h3 { font-family: 'Space Mono', monospace; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.5rem; }
+  .cert-items { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+  .cert-item { font-size: 1rem; font-weight: 300; color: var(--warm-grey); padding: 0.5rem 1.2rem; background: var(--light-clay); border-left: 3px solid var(--clay); }
+
+  /* CONTACT */
+  .contact { background: var(--clay); color: var(--cream); padding: 8rem 5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .contact h2 { font-size: clamp(2.4rem, 4vw, 3.8rem); font-weight: 300; line-height: 1.15; margin-bottom: 1.5rem; }
+  .contact h2 em { font-style: italic; }
+  .contact > div > p { font-size: 1.2rem; font-weight: 300; line-height: 1.7; color: rgba(245,240,232,0.8); }
+  .contact-links { display: flex; flex-direction: column; gap: 1rem; }
+  .contact-item { display: flex; align-items: center; gap: 1.5rem; padding: 1.2rem 1.8rem; background: rgba(255,255,255,0.12); text-decoration: none; color: var(--cream); transition: background 0.2s; }
+  .contact-item:hover { background: rgba(255,255,255,0.22); }
+  .contact-item-label { font-family: 'Space Mono', monospace; font-size: 0.58rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(245,240,232,0.65); margin-bottom: 0.2rem; }
+  .contact-item-value { font-size: 1.05rem; font-weight: 300; }
+
+  /* FOOTER */
+  footer { background: var(--deep); padding: 2.5rem 5rem; display: flex; justify-content: space-between; align-items: center; }
+  footer p { font-family: 'Space Mono', monospace; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--warm-grey); }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes expandLine { from { width: 0; opacity: 0; } to { width: 60px; opacity: 1; } }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.6rem; }
+    .nav-links { gap: 1.2rem; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 6rem 2rem 3rem; }
+    .hero-right { min-height: 60vw; }
+    .hero-bottom { left: 2rem; }
+    .section { padding: 5rem 2rem; }
+    .about-grid, .contact { grid-template-columns: 1fr; gap: 3rem; }
+    .projects-grid { grid-template-columns: 1fr; }
+    .project-card:nth-child(1), .project-card:nth-child(4) { grid-column: 1; }
+    .skills-layout, .edu-grid { grid-template-columns: 1fr; }
+    .contact { padding: 5rem 2rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-logo">Muhammad T. Abubakar</span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-label">Assoc. AIA &middot; Oklahoma, USA</p>
+    <h1 class="hero-name">Muhammad<br><em>Tijani</em><br>Abubakar</h1>
+    <div class="hero-divider"></div>
+    <p class="hero-tagline">Sustainable-focused Architect and Construction Manager bridging innovative design with real-world delivery &mdash; Across the Globe.</p>
+    <div class="hero-creds">
+      <span class="cred-tag">Assoc. AIA</span>
+      <span class="cred-tag">M.Con.Sci. &middot; Texas A&amp;M</span>
+      <span class="cred-tag">M.Sc. Civil Engineering</span>
+      <span class="cred-tag">B.Sc. Architecture</span>
+      <span class="cred-tag">Columbia Cert.</span>
+      <span class="cred-tag">OSHA Certified</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- Architectural hero illustration -->
+    <svg viewBox="0 0 700 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" style="height:100%;min-height:100vh;">
+      <rect width="700" height="800" fill="#2c2318"/>
+      <!-- Sky gradient -->
+      <defs>
+        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#1a0f0a"/>
+          <stop offset="60%" stop-color="#3d2010"/>
+          <stop offset="100%" stop-color="#2c2318"/>
+        </linearGradient>
+        <linearGradient id="glow" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#c0813f" stop-opacity="0.4"/>
+          <stop offset="100%" stop-color="#c0813f" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="facade" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="#3d2b1a"/>
+          <stop offset="100%" stop-color="#1e1510"/>
+        </linearGradient>
+        <linearGradient id="leftfade" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="#f5f0e8"/>
+          <stop offset="30%" stop-color="#f5f0e8" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <rect width="700" height="800" fill="url(#sky)"/>
+      <!-- Moon / accent glow -->
+      <circle cx="560" cy="120" r="50" fill="#c0813f" opacity="0.12"/>
+      <circle cx="560" cy="120" r="30" fill="#c0813f" opacity="0.18"/>
+      <circle cx="560" cy="120" r="16" fill="#e8a060" opacity="0.5"/>
+      <!-- Stars -->
+      <circle cx="120" cy="60" r="1.2" fill="#f5f0e8" opacity="0.6"/>
+      <circle cx="200" cy="40" r="0.8" fill="#f5f0e8" opacity="0.5"/>
+      <circle cx="310" cy="80" r="1" fill="#f5f0e8" opacity="0.4"/>
+      <circle cx="450" cy="50" r="1.4" fill="#f5f0e8" opacity="0.5"/>
+      <circle cx="620" cy="200" r="0.9" fill="#f5f0e8" opacity="0.4"/>
+      <circle cx="80" cy="150" r="0.7" fill="#f5f0e8" opacity="0.3"/>
+      <circle cx="380" cy="30" r="1" fill="#f5f0e8" opacity="0.6"/>
+      <circle cx="650" cy="90" r="0.8" fill="#f5f0e8" opacity="0.4"/>
+      <!-- Ground line -->
+      <rect x="0" y="650" width="700" height="150" fill="#1a0e08"/>
+      <!-- Main building — tall tower -->
+      <rect x="240" y="180" width="160" height="480" fill="url(#facade)"/>
+      <!-- Tower windows grid -->
+      <g fill="#c0813f" opacity="0.35">
+        <rect x="260" y="200" width="22" height="14" rx="1"/>
+        <rect x="296" y="200" width="22" height="14" rx="1"/>
+        <rect x="332" y="200" width="22" height="14" rx="1"/>
+        <rect x="368" y="200" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="230" width="22" height="14" rx="1"/>
+        <rect x="296" y="230" width="22" height="14" rx="1"/>
+        <rect x="332" y="230" width="22" height="14" rx="1"/>
+        <rect x="368" y="230" width="22" height="14" rx="1" opacity="0.6"/>
+
+        <rect x="260" y="260" width="22" height="14" rx="1" opacity="0.7"/>
+        <rect x="296" y="260" width="22" height="14" rx="1"/>
+        <rect x="332" y="260" width="22" height="14" rx="1" opacity="0.5"/>
+        <rect x="368" y="260" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="290" width="22" height="14" rx="1"/>
+        <rect x="296" y="290" width="22" height="14" rx="1" opacity="0.4"/>
+        <rect x="332" y="290" width="22" height="14" rx="1"/>
+        <rect x="368" y="290" width="22" height="14" rx="1" opacity="0.7"/>
+
+        <rect x="260" y="320" width="22" height="14" rx="1" opacity="0.5"/>
+        <rect x="296" y="320" width="22" height="14" rx="1"/>
+        <rect x="332" y="320" width="22" height="14" rx="1" opacity="0.8"/>
+        <rect x="368" y="320" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="350" width="22" height="14" rx="1"/>
+        <rect x="296" y="350" width="22" height="14" rx="1" opacity="0.6"/>
+        <rect x="332" y="350" width="22" height="14" rx="1"/>
+        <rect x="368" y="350" width="22" height="14" rx="1" opacity="0.4"/>
+
+        <rect x="260" y="380" width="22" height="14" rx="1" opacity="0.6"/>
+        <rect x="296" y="380" width="22" height="14" rx="1"/>
+        <rect x="332" y="380" width="22" height="14" rx="1" opacity="0.7"/>
+        <rect x="368" y="380" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="410" width="22" height="14" rx="1"/>
+        <rect x="296" y="410" width="22" height="14" rx="1" opacity="0.5"/>
+        <rect x="332" y="410" width="22" height="14" rx="1"/>
+        <rect x="368" y="410" width="22" height="14" rx="1" opacity="0.8"/>
+
+        <rect x="260" y="440" width="22" height="14" rx="1" opacity="0.4"/>
+        <rect x="296" y="440" width="22" height="14" rx="1"/>
+        <rect x="332" y="440" width="22" height="14" rx="1" opacity="0.6"/>
+        <rect x="368" y="440" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="470" width="22" height="14" rx="1"/>
+        <rect x="296" y="470" width="22" height="14" rx="1" opacity="0.7"/>
+        <rect x="332" y="470" width="22" height="14" rx="1"/>
+        <rect x="368" y="470" width="22" height="14" rx="1" opacity="0.5"/>
+
+        <rect x="260" y="500" width="22" height="14" rx="1" opacity="0.8"/>
+        <rect x="296" y="500" width="22" height="14" rx="1"/>
+        <rect x="332" y="500" width="22" height="14" rx="1" opacity="0.4"/>
+        <rect x="368" y="500" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="530" width="22" height="14" rx="1"/>
+        <rect x="296" y="530" width="22" height="14" rx="1" opacity="0.6"/>
+        <rect x="332" y="530" width="22" height="14" rx="1"/>
+        <rect x="368" y="530" width="22" height="14" rx="1" opacity="0.7"/>
+
+        <rect x="260" y="560" width="22" height="14" rx="1" opacity="0.5"/>
+        <rect x="296" y="560" width="22" height="14" rx="1"/>
+        <rect x="332" y="560" width="22" height="14" rx="1" opacity="0.8"/>
+        <rect x="368" y="560" width="22" height="14" rx="1"/>
+
+        <rect x="260" y="590" width="22" height="14" rx="1"/>
+        <rect x="296" y="590" width="22" height="14" rx="1" opacity="0.4"/>
+        <rect x="332" y="590" width="22" height="14" rx="1"/>
+        <rect x="368" y="590" width="22" height="14" rx="1" opacity="0.6"/>
+      </g>
+      <!-- Building accent vertical lines -->
+      <line x1="280" y1="180" x2="280" y2="660" stroke="#c0813f" stroke-width="0.5" opacity="0.2"/>
+      <line x1="320" y1="180" x2="320" y2="660" stroke="#c0813f" stroke-width="0.5" opacity="0.2"/>
+      <line x1="360" y1="180" x2="360" y2="660" stroke="#c0813f" stroke-width="0.5" opacity="0.2"/>
+      <line x1="400" y1="180" x2="400" y2="660" stroke="#c0813f" stroke-width="0.5" opacity="0.2"/>
+      <!-- Left shorter building -->
+      <rect x="60" y="350" width="130" height="310" fill="#241911"/>
+      <g fill="#c0813f" opacity="0.25">
+        <rect x="80" y="370" width="16" height="10" rx="1"/>
+        <rect x="106" y="370" width="16" height="10" rx="1"/>
+        <rect x="132" y="370" width="16" height="10" rx="1"/>
+        <rect x="158" y="370" width="16" height="10" rx="1"/>
+        <rect x="80" y="392" width="16" height="10" rx="1"/>
+        <rect x="106" y="392" width="16" height="10" rx="1"/>
+        <rect x="132" y="392" width="16" height="10" rx="1"/>
+        <rect x="158" y="392" width="16" height="10" rx="1" opacity="0.5"/>
+        <rect x="80" y="414" width="16" height="10" rx="1" opacity="0.6"/>
+        <rect x="106" y="414" width="16" height="10" rx="1"/>
+        <rect x="132" y="414" width="16" height="10" rx="1"/>
+        <rect x="158" y="414" width="16" height="10" rx="1"/>
+        <rect x="80" y="436" width="16" height="10" rx="1"/>
+        <rect x="106" y="436" width="16" height="10" rx="1" opacity="0.4"/>
+        <rect x="132" y="436" width="16" height="10" rx="1"/>
+        <rect x="158" y="436" width="16" height="10" rx="1"/>
+        <rect x="80" y="458" width="16" height="10" rx="1"/>
+        <rect x="106" y="458" width="16" height="10" rx="1"/>
+        <rect x="132" y="458" width="16" height="10" rx="1" opacity="0.7"/>
+        <rect x="158" y="458" width="16" height="10" rx="1"/>
+        <rect x="80" y="480" width="16" height="10" rx="1" opacity="0.5"/>
+        <rect x="106" y="480" width="16" height="10" rx="1"/>
+        <rect x="132" y="480" width="16" height="10" rx="1"/>
+        <rect x="158" y="480" width="16" height="10" rx="1" opacity="0.6"/>
+        <rect x="80" y="502" width="16" height="10" rx="1"/>
+        <rect x="106" y="502" width="16" height="10" rx="1" opacity="0.3"/>
+        <rect x="132" y="502" width="16" height="10" rx="1"/>
+        <rect x="158" y="502" width="16" height="10" rx="1"/>
+        <rect x="80" y="524" width="16" height="10" rx="1" opacity="0.6"/>
+        <rect x="106" y="524" width="16" height="10" rx="1"/>
+        <rect x="132" y="524" width="16" height="10" rx="1" opacity="0.4"/>
+        <rect x="158" y="524" width="16" height="10" rx="1"/>
+        <rect x="80" y="546" width="16" height="10" rx="1"/>
+        <rect x="106" y="546" width="16" height="10" rx="1"/>
+        <rect x="132" y="546" width="16" height="10" rx="1"/>
+        <rect x="158" y="546" width="16" height="10" rx="1" opacity="0.5"/>
+        <rect x="80" y="568" width="16" height="10" rx="1" opacity="0.7"/>
+        <rect x="106" y="568" width="16" height="10" rx="1"/>
+        <rect x="132" y="568" width="16" height="10" rx="1"/>
+        <rect x="158" y="568" width="16" height="10" rx="1" opacity="0.3"/>
+        <rect x="80" y="590" width="16" height="10" rx="1"/>
+        <rect x="106" y="590" width="16" height="10" rx="1" opacity="0.5"/>
+        <rect x="132" y="590" width="16" height="10" rx="1"/>
+        <rect x="158" y="590" width="16" height="10" rx="1"/>
+        <rect x="80" y="612" width="16" height="10" rx="1"/>
+        <rect x="106" y="612" width="16" height="10" rx="1"/>
+        <rect x="132" y="612" width="16" height="10" rx="1" opacity="0.6"/>
+        <rect x="158" y="612" width="16" height="10" rx="1"/>
+      </g>
+      <!-- Right building -->
+      <rect x="440" y="300" width="200" height="360" fill="#201610"/>
+      <g fill="#c0813f" opacity="0.3">
+        <rect x="460" y="320" width="18" height="12" rx="1"/>
+        <rect x="492" y="320" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="524" y="320" width="18" height="12" rx="1"/>
+        <rect x="556" y="320" width="18" height="12" rx="1" opacity="0.7"/>
+        <rect x="588" y="320" width="18" height="12" rx="1"/>
+        <rect x="460" y="346" width="18" height="12" rx="1" opacity="0.6"/>
+        <rect x="492" y="346" width="18" height="12" rx="1"/>
+        <rect x="524" y="346" width="18" height="12" rx="1" opacity="0.4"/>
+        <rect x="556" y="346" width="18" height="12" rx="1"/>
+        <rect x="588" y="346" width="18" height="12" rx="1" opacity="0.8"/>
+        <rect x="460" y="372" width="18" height="12" rx="1"/>
+        <rect x="492" y="372" width="18" height="12" rx="1" opacity="0.7"/>
+        <rect x="524" y="372" width="18" height="12" rx="1"/>
+        <rect x="556" y="372" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="588" y="372" width="18" height="12" rx="1"/>
+        <rect x="460" y="398" width="18" height="12" rx="1" opacity="0.4"/>
+        <rect x="492" y="398" width="18" height="12" rx="1"/>
+        <rect x="524" y="398" width="18" height="12" rx="1" opacity="0.6"/>
+        <rect x="556" y="398" width="18" height="12" rx="1"/>
+        <rect x="588" y="398" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="460" y="424" width="18" height="12" rx="1"/>
+        <rect x="492" y="424" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="524" y="424" width="18" height="12" rx="1"/>
+        <rect x="556" y="424" width="18" height="12" rx="1" opacity="0.7"/>
+        <rect x="588" y="424" width="18" height="12" rx="1"/>
+        <rect x="460" y="450" width="18" height="12" rx="1" opacity="0.8"/>
+        <rect x="492" y="450" width="18" height="12" rx="1"/>
+        <rect x="524" y="450" width="18" height="12" rx="1" opacity="0.4"/>
+        <rect x="556" y="450" width="18" height="12" rx="1"/>
+        <rect x="588" y="450" width="18" height="12" rx="1" opacity="0.6"/>
+        <rect x="460" y="476" width="18" height="12" rx="1"/>
+        <rect x="492" y="476" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="524" y="476" width="18" height="12" rx="1"/>
+        <rect x="556" y="476" width="18" height="12" rx="1" opacity="0.3"/>
+        <rect x="588" y="476" width="18" height="12" rx="1"/>
+        <rect x="460" y="502" width="18" height="12" rx="1" opacity="0.7"/>
+        <rect x="492" y="502" width="18" height="12" rx="1"/>
+        <rect x="524" y="502" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="556" y="502" width="18" height="12" rx="1"/>
+        <rect x="588" y="502" width="18" height="12" rx="1" opacity="0.8"/>
+        <rect x="460" y="528" width="18" height="12" rx="1"/>
+        <rect x="492" y="528" width="18" height="12" rx="1" opacity="0.6"/>
+        <rect x="524" y="528" width="18" height="12" rx="1"/>
+        <rect x="556" y="528" width="18" height="12" rx="1" opacity="0.4"/>
+        <rect x="588" y="528" width="18" height="12" rx="1"/>
+        <rect x="460" y="554" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="492" y="554" width="18" height="12" rx="1"/>
+        <rect x="524" y="554" width="18" height="12" rx="1" opacity="0.7"/>
+        <rect x="556" y="554" width="18" height="12" rx="1"/>
+        <rect x="588" y="554" width="18" height="12" rx="1" opacity="0.3"/>
+        <rect x="460" y="580" width="18" height="12" rx="1"/>
+        <rect x="492" y="580" width="18" height="12" rx="1" opacity="0.6"/>
+        <rect x="524" y="580" width="18" height="12" rx="1"/>
+        <rect x="556" y="580" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="588" y="580" width="18" height="12" rx="1"/>
+        <rect x="460" y="606" width="18" height="12" rx="1" opacity="0.4"/>
+        <rect x="492" y="606" width="18" height="12" rx="1"/>
+        <rect x="524" y="606" width="18" height="12" rx="1" opacity="0.7"/>
+        <rect x="556" y="606" width="18" height="12" rx="1"/>
+        <rect x="588" y="606" width="18" height="12" rx="1" opacity="0.5"/>
+        <rect x="460" y="632" width="18" height="12" rx="1"/>
+        <rect x="492" y="632" width="18" height="12" rx="1" opacity="0.3"/>
+        <rect x="524" y="632" width="18" height="12" rx="1"/>
+        <rect x="556" y="632" width="18" height="12" rx="1" opacity="0.6"/>
+        <rect x="588" y="632" width="18" height="12" rx="1"/>
+      </g>
+      <!-- Ground reflection glow -->
+      <rect x="0" y="640" width="700" height="160" fill="url(#glow)" opacity="0.5"/>
+      <!-- Street light poles -->
+      <line x1="160" y1="640" x2="160" y2="560" stroke="#8a7f72" stroke-width="1.5"/>
+      <circle cx="160" cy="558" r="4" fill="#e8c97a" opacity="0.9"/>
+      <circle cx="160" cy="558" r="12" fill="#e8c97a" opacity="0.15"/>
+      <line x1="530" y1="640" x2="530" y2="560" stroke="#8a7f72" stroke-width="1.5"/>
+      <circle cx="530" cy="558" r="4" fill="#e8c97a" opacity="0.9"/>
+      <circle cx="530" cy="558" r="12" fill="#e8c97a" opacity="0.15"/>
+      <!-- Left cream fade overlay -->
+      <rect width="700" height="800" fill="url(#leftfade)"/>
+    </svg>
+  </div>
+  <div class="hero-bottom">
+    <span class="scroll-hint">Scroll to explore</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <p class="section-label">Profile</p>
+  <div class="about-grid">
+    <div>
+      <h2>Designing <em>spaces<br>that endure.</em></h2>
+      <p>Muhammad Tijani Abubakar is a results-driven Architect and Construction Manager with over 6 years of hands-on experience spanning affordable housing, residential developments, and large-scale construction projects across Ghana and the United States.</p>
+      <p>Holding both a Master of Science in Civil Engineering and a Bachelor of Science in Architecture, Muhammad brings a rare combination of structural rigor and design sensibility to every project &mdash; translating client visions into functional, eco-conscious, and aesthetically compelling built environments.</p>
+      <p>Currently pursuing a Master of Construction Science at Texas A&amp;M University and active with AIA Central Oklahoma, he continues to champion sustainable architecture and community-focused design.</p>
+    </div>
+    <div>
+      <div class="stat-grid">
+        <div class="stat-item">
+          <div class="stat-num">6+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">15%</div>
+          <div class="stat-label">Cost Reduction Achieved</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">20%</div>
+          <div class="stat-label">Faster Design Approval</div>
+        </div>
+      </div>
+      <ul class="expertise-list">
+        <li>Sustainable Architecture &amp; Green Design</li>
+        <li>Construction Project Management</li>
+        <li>BIM Modeling &amp; 3D Visualization</li>
+        <li>Affordable Housing Development</li>
+        <li>Site Engineering &amp; Quality Assurance</li>
+        <li>RFI Management &amp; Client Communication</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="section portfolio" id="portfolio">
+  <p class="section-label">Selected Works</p>
+  <h2>Architectural <em>Projects</em></h2>
+  <div class="projects-grid">
+
+    <!-- Card 1: wide -->
+    <div class="project-card">
+      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="p1sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b5c8d8"/><stop offset="100%" stop-color="#e8ddd0"/></linearGradient>
+          <linearGradient id="p1ground" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#8a7560"/><stop offset="100%" stop-color="#5a4a38"/></linearGradient>
+        </defs>
+        <rect width="900" height="420" fill="url(#p1sky)"/>
+        <!-- Background hills/trees -->
+        <ellipse cx="750" cy="310" rx="120" ry="60" fill="#6b8c5a" opacity="0.4"/>
+        <ellipse cx="820" cy="320" rx="90" ry="50" fill="#5a7a4a" opacity="0.3"/>
+        <!-- Pool water -->
+        <rect x="0" y="340" width="900" height="80" fill="url(#p1ground)"/>
+        <rect x="200" y="330" width="300" height="30" rx="2" fill="#4a90a8" opacity="0.8"/>
+        <rect x="210" y="332" width="280" height="4" fill="#7ab8d0" opacity="0.6"/>
+        <!-- Main house structure -->
+        <rect x="50" y="200" width="500" height="160" fill="#f0e8d8"/>
+        <rect x="50" y="180" width="500" height="25" fill="#d4c4a0"/>
+        <!-- Roof overhang -->
+        <rect x="30" y="174" width="540" height="12" fill="#c8b890"/>
+        <!-- Windows -->
+        <rect x="80" y="220" width="60" height="80" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="160" y="220" width="60" height="80" fill="#7ab8d0" opacity="0.6"/>
+        <rect x="300" y="220" width="100" height="80" fill="#7ab8d0" opacity="0.8"/>
+        <rect x="420" y="220" width="60" height="80" fill="#7ab8d0" opacity="0.5"/>
+        <!-- Door -->
+        <rect x="245" y="280" width="40" height="80" fill="#8a6040"/>
+        <!-- Pillar details -->
+        <rect x="250" y="180" width="8" height="180" fill="#e0d4b8"/>
+        <rect x="300" y="180" width="8" height="180" fill="#e0d4b8"/>
+        <!-- BQ / second unit -->
+        <rect x="580" y="250" width="200" height="110" fill="#e8e0d0"/>
+        <rect x="580" y="234" width="200" height="20" fill="#d0c4a0"/>
+        <rect x="560" y="228" width="240" height="10" fill="#c4b890"/>
+        <rect x="600" y="260" width="40" height="60" fill="#7ab8d0" opacity="0.6"/>
+        <rect x="660" y="260" width="40" height="60" fill="#7ab8d0" opacity="0.5"/>
+        <!-- Palm trees -->
+        <line x1="800" y1="340" x2="800" y2="220" stroke="#5a4030" stroke-width="5"/>
+        <ellipse cx="800" cy="215" rx="35" ry="25" fill="#3d6830" opacity="0.8"/>
+        <ellipse cx="780" cy="225" rx="25" ry="15" fill="#4a7a38" opacity="0.7"/>
+        <ellipse cx="820" cy="222" rx="28" ry="14" fill="#3d6830" opacity="0.7"/>
+        <line x1="850" y1="340" x2="845" y2="240" stroke="#5a4030" stroke-width="4"/>
+        <ellipse cx="845" cy="236" rx="28" ry="20" fill="#4a7a38" opacity="0.7"/>
+        <!-- Path -->
+        <polygon points="240,360 300,360 330,420 210,420" fill="#b8a888" opacity="0.6"/>
+        <!-- Sky clouds -->
+        <ellipse cx="650" cy="80" rx="60" ry="25" fill="white" opacity="0.5"/>
+        <ellipse cx="700" cy="70" rx="50" ry="22" fill="white" opacity="0.4"/>
+        <ellipse cx="150" cy="60" rx="70" ry="20" fill="white" opacity="0.4"/>
+      </svg>
+      <div class="project-always-visible">
+        <p class="project-type">Residential &middot; Ghana</p>
+        <h3 class="project-title">2 Units, 4-Bedroom House with Pool &amp; BQ</h3>
+      </div>
+      <div class="project-info">
+        <p class="project-desc">Twin luxury residential units featuring private swimming pools, en-suite bedrooms, and boys' quarters &mdash; designed for comfort and West African living.</p>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="project-card">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="p2sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8d8e8"/><stop offset="100%" stop-color="#e8e0d4"/></linearGradient>
+        </defs>
+        <rect width="420" height="420" fill="url(#p2sky)"/>
+        <!-- Building block -->
+        <rect x="60" y="100" width="300" height="280" fill="#e8e2d4"/>
+        <!-- Floors lines -->
+        <line x1="60" y1="160" x2="360" y2="160" stroke="#c4b89a" stroke-width="1.5"/>
+        <line x1="60" y1="220" x2="360" y2="220" stroke="#c4b89a" stroke-width="1.5"/>
+        <line x1="60" y1="280" x2="360" y2="280" stroke="#c4b89a" stroke-width="1.5"/>
+        <!-- Windows -->
+        <rect x="90" y="120" width="35" height="25" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="145" y="120" width="35" height="25" fill="#7ab8d0" opacity="0.5"/>
+        <rect x="200" y="120" width="35" height="25" fill="#7ab8d0" opacity="0.8"/>
+        <rect x="255" y="120" width="35" height="25" fill="#7ab8d0" opacity="0.6"/>
+        <rect x="310" y="120" width="35" height="25" fill="#7ab8d0" opacity="0.4"/>
+        <rect x="90" y="178" width="35" height="25" fill="#7ab8d0" opacity="0.6"/>
+        <rect x="145" y="178" width="35" height="25" fill="#7ab8d0" opacity="0.8"/>
+        <rect x="200" y="178" width="35" height="25" fill="#7ab8d0" opacity="0.4"/>
+        <rect x="255" y="178" width="35" height="25" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="310" y="178" width="35" height="25" fill="#7ab8d0" opacity="0.5"/>
+        <rect x="90" y="238" width="35" height="25" fill="#7ab8d0" opacity="0.5"/>
+        <rect x="145" y="238" width="35" height="25" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="200" y="238" width="35" height="25" fill="#7ab8d0" opacity="0.9"/>
+        <rect x="255" y="238" width="35" height="25" fill="#7ab8d0" opacity="0.6"/>
+        <rect x="310" y="238" width="35" height="25" fill="#7ab8d0" opacity="0.4"/>
+        <!-- Rooftop terrace -->
+        <rect x="60" y="70" width="300" height="35" fill="#d4c8a8"/>
+        <rect x="55" y="62" width="310" height="14" fill="#c8b894"/>
+        <!-- Terrace railing -->
+        <rect x="60" y="62" width="300" height="3" fill="#a89870"/>
+        <line x1="80" y1="62" x2="80" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="110" y1="62" x2="110" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="140" y1="62" x2="140" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="170" y1="62" x2="170" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="200" y1="62" x2="200" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="230" y1="62" x2="230" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="260" y1="62" x2="260" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="290" y1="62" x2="290" y2="76" stroke="#a89870" stroke-width="2"/>
+        <line x1="320" y1="62" x2="320" y2="76" stroke="#a89870" stroke-width="2"/>
+        <!-- Terrace furniture silhouette -->
+        <rect x="120" y="66" width="50" height="8" rx="2" fill="#8a7a5a" opacity="0.5"/>
+        <rect x="200" y="64" width="30" height="10" rx="2" fill="#8a7a5a" opacity="0.4"/>
+        <!-- Door and entrance -->
+        <rect x="177" y="320" width="66" height="60" fill="#8a6848"/>
+        <rect x="185" y="328" width="20" height="30" fill="#a07850" opacity="0.6"/>
+        <rect x="215" y="328" width="20" height="30" fill="#a07850" opacity="0.6"/>
+        <!-- Ground -->
+        <rect x="0" y="380" width="420" height="40" fill="#b4a884"/>
+        <rect x="160" y="378" width="100" height="5" fill="#a89870"/>
+      </svg>
+      <div class="project-always-visible">
+        <p class="project-type">Residential &middot; Ghana</p>
+        <h3 class="project-title">2-Bedroom Apartment with Rooftop Terrace</h3>
+      </div>
+      <div class="project-info">
+        <p class="project-desc">A contemporary apartment design integrating indoor-outdoor living through a signature rooftop terrace offering panoramic city views.</p>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="project-card">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="p3sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#d4e8c8"/><stop offset="100%" stop-color="#e8ead4"/></linearGradient>
+        </defs>
+        <rect width="420" height="420" fill="url(#p3sky)"/>
+        <!-- Lush landscape background -->
+        <ellipse cx="340" cy="300" rx="100" ry="60" fill="#5a8040" opacity="0.5"/>
+        <ellipse cx="80" cy="310" rx="80" ry="50" fill="#4a7030" opacity="0.4"/>
+        <!-- Main villa structure -->
+        <rect x="80" y="200" width="260" height="180" fill="#f4ece0"/>
+        <!-- Pitched roof -->
+        <polygon points="60,200 210,120 360,200" fill="#c0a870"/>
+        <polygon points="60,200 80,200 80,208 60,208" fill="#a89058"/>
+        <polygon points="360,200 340,200 340,208 360,208" fill="#a89058"/>
+        <!-- Ridge -->
+        <line x1="60" y1="200" x2="360" y2="200" stroke="#a89058" stroke-width="3"/>
+        <!-- Windows -->
+        <rect x="100" y="230" width="50" height="60" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="185" y="230" width="50" height="70" fill="#7ab8d0" opacity="0.8"/>
+        <rect x="270" y="230" width="50" height="60" fill="#7ab8d0" opacity="0.6"/>
+        <!-- Window details -->
+        <line x1="125" y1="230" x2="125" y2="290" stroke="#5a98b0" stroke-width="1"/>
+        <line x1="100" y1="260" x2="150" y2="260" stroke="#5a98b0" stroke-width="1"/>
+        <line x1="210" y1="230" x2="210" y2="300" stroke="#5a98b0" stroke-width="1"/>
+        <line x1="185" y1="265" x2="235" y2="265" stroke="#5a98b0" stroke-width="1"/>
+        <line x1="295" y1="230" x2="295" y2="290" stroke="#5a98b0" stroke-width="1"/>
+        <line x1="270" y1="260" x2="320" y2="260" stroke="#5a98b0" stroke-width="1"/>
+        <!-- Front door -->
+        <rect x="170" y="320" width="80" height="60" fill="#7a5030"/>
+        <circle cx="247" cy="350" r="4" fill="#c0a040"/>
+        <!-- Arch detail over door -->
+        <path d="M170,320 Q210,290 250,320" fill="none" stroke="#c0a870" stroke-width="3"/>
+        <!-- Portico columns -->
+        <rect x="160" y="280" width="10" height="100" fill="#e8e0d0"/>
+        <rect x="250" y="280" width="10" height="100" fill="#e8e0d0"/>
+        <!-- Ground and path -->
+        <rect x="0" y="378" width="420" height="42" fill="#8a9c60"/>
+        <rect x="180" y="368" width="60" height="55" fill="#b8a880" opacity="0.8"/>
+        <!-- Garden plants -->
+        <circle cx="60" cy="370" r="20" fill="#4a7a30" opacity="0.7"/>
+        <circle cx="360" cy="370" r="20" fill="#4a7a30" opacity="0.7"/>
+        <rect x="57" y="370" width="6" height="30" fill="#5a4030"/>
+        <rect x="357" y="370" width="6" height="30" fill="#5a4030"/>
+      </svg>
+      <div class="project-always-visible">
+        <p class="project-type">Residential &middot; Eastern Region, Ghana</p>
+        <h3 class="project-title">Proposed Project &mdash; Aburi</h3>
+      </div>
+      <div class="project-info">
+        <p class="project-desc">A context-sensitive residential development in Aburi, sensitively designed to respond to the region's natural landscape and climate.</p>
+      </div>
+    </div>
+
+    <!-- Card 4: wide -->
+    <div class="project-card">
+      <svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="p4sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#b8c8d8"/><stop offset="100%" stop-color="#d8d4cc"/></linearGradient>
+          <linearGradient id="p4glass" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#a0c4d8" stop-opacity="0.8"/><stop offset="100%" stop-color="#7ab0c8" stop-opacity="0.6"/></linearGradient>
+        </defs>
+        <rect width="900" height="420" fill="url(#p4sky)"/>
+        <!-- Complex multi-unit building -->
+        <!-- Block A - left -->
+        <rect x="30" y="150" width="200" height="240" fill="#e0d8cc"/>
+        <rect x="30" y="140" width="200" height="14" fill="#c8bea8"/>
+        <!-- Block B - center tall -->
+        <rect x="260" y="80" width="280" height="310" fill="#e8e0d4"/>
+        <rect x="260" y="68" width="280" height="16" fill="#d4c8b0"/>
+        <!-- Rooftop tank/feature -->
+        <rect x="330" y="48" width="80" height="24" fill="#c8bea8"/>
+        <rect x="350" y="28" width="40" height="22" fill="#b8ae98"/>
+        <!-- Block C - right -->
+        <rect x="570" y="170" width="260" height="220" fill="#dcd4c8"/>
+        <rect x="570" y="158" width="260" height="16" fill="#c4baa4"/>
+        <!-- Curtain wall glass facade - center building -->
+        <rect x="280" y="90" width="240" height="300" fill="url(#p4glass)" opacity="0.5"/>
+        <!-- Vertical curtain wall lines -->
+        <line x1="310" y1="90" x2="310" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <line x1="340" y1="90" x2="340" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <line x1="370" y1="90" x2="370" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <line x1="400" y1="90" x2="400" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <line x1="430" y1="90" x2="430" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <line x1="460" y1="90" x2="460" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <line x1="490" y1="90" x2="490" y2="390" stroke="#90b8c8" stroke-width="1.5" opacity="0.7"/>
+        <!-- Horizontal floor lines - center -->
+        <line x1="260" y1="130" x2="540" y2="130" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <line x1="260" y1="170" x2="540" y2="170" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <line x1="260" y1="210" x2="540" y2="210" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <line x1="260" y1="250" x2="540" y2="250" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <line x1="260" y1="290" x2="540" y2="290" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <line x1="260" y1="330" x2="540" y2="330" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <line x1="260" y1="370" x2="540" y2="370" stroke="#b0d0e0" stroke-width="1" opacity="0.6"/>
+        <!-- Left block windows -->
+        <g fill="#7ab8d0" opacity="0.65">
+          <rect x="50" y="168" width="30" height="20" rx="1"/>
+          <rect x="92" y="168" width="30" height="20" rx="1"/>
+          <rect x="134" y="168" width="30" height="20" rx="1"/>
+          <rect x="176" y="168" width="30" height="20" rx="1"/>
+          <rect x="50" y="202" width="30" height="20" rx="1"/>
+          <rect x="92" y="202" width="30" height="20" rx="1"/>
+          <rect x="134" y="202" width="30" height="20" rx="1"/>
+          <rect x="176" y="202" width="30" height="20" rx="1"/>
+          <rect x="50" y="236" width="30" height="20" rx="1"/>
+          <rect x="92" y="236" width="30" height="20" rx="1"/>
+          <rect x="134" y="236" width="30" height="20" rx="1"/>
+          <rect x="176" y="236" width="30" height="20" rx="1"/>
+          <rect x="50" y="270" width="30" height="20" rx="1"/>
+          <rect x="92" y="270" width="30" height="20" rx="1"/>
+          <rect x="134" y="270" width="30" height="20" rx="1"/>
+          <rect x="176" y="270" width="30" height="20" rx="1"/>
+          <rect x="50" y="304" width="30" height="20" rx="1"/>
+          <rect x="92" y="304" width="30" height="20" rx="1"/>
+          <rect x="134" y="304" width="30" height="20" rx="1"/>
+          <rect x="176" y="304" width="30" height="20" rx="1"/>
+          <rect x="50" y="338" width="30" height="20" rx="1"/>
+          <rect x="92" y="338" width="30" height="20" rx="1"/>
+          <rect x="134" y="338" width="30" height="20" rx="1"/>
+          <rect x="176" y="338" width="30" height="20" rx="1"/>
+        </g>
+        <!-- Right block windows -->
+        <g fill="#7ab8d0" opacity="0.55">
+          <rect x="590" y="186" width="32" height="20" rx="1"/>
+          <rect x="636" y="186" width="32" height="20" rx="1"/>
+          <rect x="682" y="186" width="32" height="20" rx="1"/>
+          <rect x="728" y="186" width="32" height="20" rx="1"/>
+          <rect x="774" y="186" width="32" height="20" rx="1"/>
+          <rect x="590" y="220" width="32" height="20" rx="1"/>
+          <rect x="636" y="220" width="32" height="20" rx="1"/>
+          <rect x="682" y="220" width="32" height="20" rx="1"/>
+          <rect x="728" y="220" width="32" height="20" rx="1"/>
+          <rect x="774" y="220" width="32" height="20" rx="1"/>
+          <rect x="590" y="254" width="32" height="20" rx="1"/>
+          <rect x="636" y="254" width="32" height="20" rx="1"/>
+          <rect x="682" y="254" width="32" height="20" rx="1"/>
+          <rect x="728" y="254" width="32" height="20" rx="1"/>
+          <rect x="774" y="254" width="32" height="20" rx="1"/>
+          <rect x="590" y="288" width="32" height="20" rx="1"/>
+          <rect x="636" y="288" width="32" height="20" rx="1"/>
+          <rect x="682" y="288" width="32" height="20" rx="1"/>
+          <rect x="728" y="288" width="32" height="20" rx="1"/>
+          <rect x="774" y="288" width="32" height="20" rx="1"/>
+          <rect x="590" y="322" width="32" height="20" rx="1"/>
+          <rect x="636" y="322" width="32" height="20" rx="1"/>
+          <rect x="682" y="322" width="32" height="20" rx="1"/>
+          <rect x="728" y="322" width="32" height="20" rx="1"/>
+          <rect x="774" y="322" width="32" height="20" rx="1"/>
+          <rect x="590" y="356" width="32" height="20" rx="1"/>
+          <rect x="636" y="356" width="32" height="20" rx="1"/>
+          <rect x="682" y="356" width="32" height="20" rx="1"/>
+          <rect x="728" y="356" width="32" height="20" rx="1"/>
+          <rect x="774" y="356" width="32" height="20" rx="1"/>
+        </g>
+        <!-- Lobby entrance - center -->
+        <rect x="340" y="340" width="160" height="50" fill="#d0c8b8"/>
+        <rect x="350" y="340" width="60" height="50" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="430" y="340" width="60" height="50" fill="#7ab8d0" opacity="0.7"/>
+        <!-- Ground / landscaping -->
+        <rect x="0" y="388" width="900" height="32" fill="#8a9c60"/>
+        <rect x="0" y="384" width="900" height="6" fill="#a0b070"/>
+        <!-- Driveway -->
+        <rect x="300" y="384" width="300" height="36" fill="#b0a890"/>
+      </svg>
+      <div class="project-always-visible">
+        <p class="project-type">Multi-Unit &middot; Accra, Ghana</p>
+        <h3 class="project-title">Apartment Complex &mdash; East Legon Hills</h3>
+      </div>
+      <div class="project-info">
+        <p class="project-desc">A premium multi-unit apartment complex in Accra's prestigious East Legon Hills, featuring modern amenities and considered landscaping.</p>
+      </div>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="project-card">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="p5bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#e8e4d8"/><stop offset="100%" stop-color="#d4d0c8"/></linearGradient>
+        </defs>
+        <rect width="420" height="420" fill="url(#p5bg)"/>
+        <!-- Technical drawing style - sustainable details -->
+        <!-- Sun path diagram -->
+        <circle cx="210" cy="80" r="55" fill="none" stroke="#c0813f" stroke-width="1.5" stroke-dasharray="6 4" opacity="0.5"/>
+        <circle cx="210" cy="80" r="22" fill="#e8c050" opacity="0.7"/>
+        <!-- Sun rays -->
+        <line x1="210" y1="46" x2="210" y2="28" stroke="#e8c050" stroke-width="2" opacity="0.6"/>
+        <line x1="210" y1="114" x2="210" y2="132" stroke="#e8c050" stroke-width="2" opacity="0.6"/>
+        <line x1="176" y1="80" x2="158" y2="80" stroke="#e8c050" stroke-width="2" opacity="0.6"/>
+        <line x1="244" y1="80" x2="262" y2="80" stroke="#e8c050" stroke-width="2" opacity="0.6"/>
+        <line x1="186" y1="56" x2="172" y2="42" stroke="#e8c050" stroke-width="2" opacity="0.6"/>
+        <line x1="234" y1="104" x2="248" y2="118" stroke="#e8c050" stroke-width="2" opacity="0.6"/>
+        <!-- Building cross-section -->
+        <rect x="70" y="200" width="280" height="180" fill="none" stroke="#8a7f72" stroke-width="1.5"/>
+        <!-- Interior walls -->
+        <line x1="140" y1="200" x2="140" y2="380" stroke="#8a7f72" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="210" y1="200" x2="210" y2="380" stroke="#8a7f72" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="280" y1="200" x2="280" y2="380" stroke="#8a7f72" stroke-width="1" stroke-dasharray="4 3"/>
+        <line x1="70" y1="280" x2="350" y2="280" stroke="#8a7f72" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Solar panels on roof -->
+        <rect x="80" y="188" width="50" height="14" fill="#6080a0" opacity="0.7" rx="2"/>
+        <rect x="138" y="188" width="50" height="14" fill="#6080a0" opacity="0.7" rx="2"/>
+        <rect x="196" y="188" width="50" height="14" fill="#6080a0" opacity="0.7" rx="2"/>
+        <rect x="254" y="188" width="50" height="14" fill="#6080a0" opacity="0.7" rx="2"/>
+        <!-- Rain water arrows -->
+        <path d="M380 220 Q400 240 380 260" fill="none" stroke="#5090b0" stroke-width="2" marker-end="url(#arrow)"/>
+        <!-- Wind flow arrows -->
+        <path d="M30 250 Q50 240 80 250" fill="none" stroke="#70a070" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.7"/>
+        <path d="M30 270 Q50 260 80 270" fill="none" stroke="#70a070" stroke-width="1.5" stroke-dasharray="5 3" opacity="0.7"/>
+        <!-- Labels -->
+        <text x="85" y="240" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Living</text>
+        <text x="148" y="240" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Bed</text>
+        <text x="218" y="240" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Study</text>
+        <text x="286" y="240" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Bath</text>
+        <text x="85" y="320" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Kitchen</text>
+        <text x="148" y="320" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Dining</text>
+        <text x="220" y="320" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Lobby</text>
+        <text x="286" y="320" font-family="monospace" font-size="9" fill="#5a4030" opacity="0.8">Store</text>
+        <!-- Dimension lines -->
+        <line x1="70" y1="395" x2="350" y2="395" stroke="#c0813f" stroke-width="1" opacity="0.6"/>
+        <line x1="70" y1="390" x2="70" y2="400" stroke="#c0813f" stroke-width="1" opacity="0.6"/>
+        <line x1="350" y1="390" x2="350" y2="400" stroke="#c0813f" stroke-width="1" opacity="0.6"/>
+        <text x="190" y="408" font-family="monospace" font-size="10" fill="#c0813f" opacity="0.8">18.0 m</text>
+        <!-- North arrow -->
+        <circle cx="385" cy="170" r="16" fill="none" stroke="#8a7f72" stroke-width="1.5"/>
+        <polygon points="385,155 381,175 385,170 389,175" fill="#5a4030"/>
+        <text x="381" y="195" font-family="monospace" font-size="9" fill="#5a4030">N</text>
+      </svg>
+      <div class="project-always-visible">
+        <p class="project-type">Sustainable Design Research</p>
+        <h3 class="project-title">Sustainable Architecture Details</h3>
+      </div>
+      <div class="project-info">
+        <p class="project-desc">Research and application of cutting-edge sustainable construction techniques and green material integration across multiple live project phases.</p>
+      </div>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="project-card">
+      <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="p6sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#c8d4e0"/><stop offset="100%" stop-color="#e0dcd4"/></linearGradient>
+          <linearGradient id="p6pool" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#5aaccc"/><stop offset="100%" stop-color="#3888a8"/></linearGradient>
+        </defs>
+        <rect width="420" height="420" fill="url(#p6sky)"/>
+        <!-- Background greenery -->
+        <ellipse cx="350" cy="260" rx="80" ry="50" fill="#5a8840" opacity="0.4"/>
+        <ellipse cx="60" cy="270" rx="70" ry="45" fill="#4a7830" opacity="0.4"/>
+        <!-- Main apartment block -->
+        <rect x="80" y="150" width="260" height="220" fill="#ece4d4"/>
+        <!-- Balconies -->
+        <rect x="70" y="168" width="20" height="40" fill="#d8d0c0"/>
+        <rect x="70" y="222" width="20" height="40" fill="#d8d0c0"/>
+        <rect x="70" y="276" width="20" height="40" fill="#d8d0c0"/>
+        <rect x="330" y="168" width="20" height="40" fill="#d8d0c0"/>
+        <rect x="330" y="222" width="20" height="40" fill="#d8d0c0"/>
+        <rect x="330" y="276" width="20" height="40" fill="#d8d0c0"/>
+        <!-- Balcony railings -->
+        <line x1="70" y1="168" x2="90" y2="168" stroke="#b0a890" stroke-width="2"/>
+        <line x1="70" y1="208" x2="90" y2="208" stroke="#b0a890" stroke-width="2"/>
+        <line x1="70" y1="222" x2="90" y2="222" stroke="#b0a890" stroke-width="2"/>
+        <line x1="70" y1="262" x2="90" y2="262" stroke="#b0a890" stroke-width="2"/>
+        <!-- Flat roof + parapet -->
+        <rect x="70" y="138" width="280" height="16" fill="#d4c8a8"/>
+        <rect x="65" y="130" width="290" height="12" fill="#c8bc98"/>
+        <!-- Windows per floor -->
+        <g fill="#7ab8d0">
+          <rect x="100" y="168" width="28" height="34" rx="1" opacity="0.75"/>
+          <rect x="145" y="168" width="28" height="34" rx="1" opacity="0.6"/>
+          <rect x="200" y="168" width="28" height="34" rx="1" opacity="0.85"/>
+          <rect x="245" y="168" width="28" height="34" rx="1" opacity="0.7"/>
+          <rect x="290" y="168" width="28" height="34" rx="1" opacity="0.5"/>
+          <rect x="100" y="222" width="28" height="34" rx="1" opacity="0.6"/>
+          <rect x="145" y="222" width="28" height="34" rx="1" opacity="0.8"/>
+          <rect x="200" y="222" width="28" height="34" rx="1" opacity="0.5"/>
+          <rect x="245" y="222" width="28" height="34" rx="1" opacity="0.75"/>
+          <rect x="290" y="222" width="28" height="34" rx="1" opacity="0.65"/>
+          <rect x="100" y="276" width="28" height="34" rx="1" opacity="0.8"/>
+          <rect x="145" y="276" width="28" height="34" rx="1" opacity="0.55"/>
+          <rect x="200" y="276" width="28" height="34" rx="1" opacity="0.7"/>
+          <rect x="245" y="276" width="28" height="34" rx="1" opacity="0.85"/>
+          <rect x="290" y="276" width="28" height="34" rx="1" opacity="0.6"/>
+        </g>
+        <!-- Lobby -->
+        <rect x="175" y="330" width="70" height="40" fill="#d0c8b8"/>
+        <rect x="183" y="330" width="22" height="40" fill="#7ab8d0" opacity="0.7"/>
+        <rect x="215" y="330" width="22" height="40" fill="#7ab8d0" opacity="0.7"/>
+        <!-- Pool -->
+        <rect x="100" y="358" width="220" height="40" rx="4" fill="url(#p6pool)"/>
+        <rect x="108" y="362" width="204" height="6" fill="#80c8e0" opacity="0.5"/>
+        <!-- Pool lane lines -->
+        <line x1="165" y1="364" x2="165" y2="396" stroke="#4a98b8" stroke-width="1" opacity="0.5"/>
+        <line x1="210" y1="364" x2="210" y2="396" stroke="#4a98b8" stroke-width="1" opacity="0.5"/>
+        <line x1="255" y1="364" x2="255" y2="396" stroke="#4a98b8" stroke-width="1" opacity="0.5"/>
+        <!-- Pool deck -->
+        <rect x="85" y="354" width="250" height="8" fill="#c8b890"/>
+        <!-- Ground -->
+        <rect x="0" y="395" width="420" height="25" fill="#8a9c60"/>
+      </svg>
+      <div class="project-always-visible">
+        <p class="project-type">Residential &middot; Ghana</p>
+        <h3 class="project-title">Proposed Apartment Complex with Pool</h3>
+      </div>
+      <div class="project-info">
+        <p class="project-desc">A lifestyle-centric apartment complex proposal featuring a communal swimming pool, designed to attract Accra's growing professional class.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section experience" id="experience">
+  <p class="section-label">Career</p>
+  <h2>Professional <em>Experience</em></h2>
+  <div class="timeline">
+    <div class="timeline-item">
+      <p class="timeline-period">January 2024 &mdash; Present</p>
+      <h3 class="timeline-role">Volunteer Member</h3>
+      <p class="timeline-company">AIA Central Oklahoma &middot; Oklahoma, USA</p>
+      <ul class="timeline-bullets">
+        <li>Participates in initiatives integrating architecture education into Oklahoma's K-12 curriculum</li>
+        <li>Manages colleague volunteers for AIA architecture tours, ensuring high-quality participant experiences</li>
+        <li>Coordinates events including the AIA Educational Conference, local luncheons, and community outreach programs</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-period">June 2021 &mdash; May 2023</p>
+      <h3 class="timeline-role">Project Manager</h3>
+      <p class="timeline-company">Studio 959 Global &middot; Accra, Ghana</p>
+      <ul class="timeline-bullets">
+        <li>Led on-site construction supervision across multiple large-scale projects, maintaining quality and safety standards</li>
+        <li>Supervised a team of 15+ subcontractors, ensuring adherence to project timelines and budgets</li>
+        <li>Reduced construction costs by 15% through efficient procurement and resource management</li>
+        <li>Applied advanced 3D modeling to reduce design approval time by 20% through clearer stakeholder communication</li>
+        <li>Prepared detailed progress reports and proposed solutions to senior management</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-period">September 2018 &mdash; October 2019</p>
+      <h3 class="timeline-role">Project Coordinator</h3>
+      <p class="timeline-company">PG Prime Company Limited &middot; Accra, Ghana</p>
+      <ul class="timeline-bullets">
+        <li>Assisted in planning and execution of residential and commercial construction projects</li>
+        <li>Conducted quality assessments of materials and workmanship to ensure specification compliance</li>
+        <li>Coordinated with architects, engineers, and contractors to resolve technical issues</li>
+        <li>Prepared technical documentation including drawings, schedules, and reports</li>
+      </ul>
+    </div>
+    <div class="timeline-item">
+      <p class="timeline-period">Previous Role</p>
+      <h3 class="timeline-role">Lead Project Architect / CEO</h3>
+      <p class="timeline-company">TM Engineering Group &middot; Accra, Ghana</p>
+      <ul class="timeline-bullets">
+        <li>Directed architectural design and project delivery across the full project lifecycle</li>
+        <li>Provided leadership in schematic design, design development, and construction documentation</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills" id="skills">
+  <p class="section-label">Capabilities</p>
+  <h2>Tools &amp; <em>Expertise</em></h2>
+  <div class="skills-layout">
+    <div class="skill-group">
+      <h3>Design Software</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Autodesk Revit</span>
+        <span class="skill-tag">ArchiCAD</span>
+        <span class="skill-tag">AutoCAD</span>
+        <span class="skill-tag">BIM 360</span>
+        <span class="skill-tag">SketchUp</span>
+        <span class="skill-tag">Lumion</span>
+        <span class="skill-tag">Enscape</span>
+        <span class="skill-tag">Photoshop</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Architecture &amp; Construction</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Schematic Design</span>
+        <span class="skill-tag">Design Development</span>
+        <span class="skill-tag">Construction Drawings</span>
+        <span class="skill-tag">Sustainable Design</span>
+        <span class="skill-tag">Affordable Housing</span>
+        <span class="skill-tag">OSHA Safety</span>
+        <span class="skill-tag">Building Codes</span>
+        <span class="skill-tag">RFI Management</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <h3>Management &amp; Business</h3>
+      <div class="skill-tags">
+        <span class="skill-tag">Project Management</span>
+        <span class="skill-tag">Budgeting &amp; Cost Control</span>
+        <span class="skill-tag">Quality Assurance</span>
+        <span class="skill-tag">Procurement</span>
+        <span class="skill-tag">Team Leadership</span>
+        <span class="skill-tag">Stakeholder Communication</span>
+        <span class="skill-tag">Site Supervision</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section education" id="education">
+  <p class="section-label">Academic Background</p>
+  <h2>Education &amp; <em>Credentials</em></h2>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <span class="edu-badge">In Progress</span>
+      <h3 class="edu-degree">Master of Construction Science</h3>
+      <p class="edu-school">Texas A&amp;M University &middot; College Station, Texas, USA</p>
+      <p class="edu-detail">Expected December 2026</p>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge">Completed</span>
+      <h3 class="edu-degree">Master of Science in Civil Engineering</h3>
+      <p class="edu-school">Russian University of Transport (MIIT) &middot; Moscow, Russia</p>
+      <p class="edu-detail">Concentration: Structures &amp; Construction &middot; June 2021</p>
+    </div>
+    <div class="edu-card">
+      <span class="edu-badge">Completed</span>
+      <h3 class="edu-degree">Bachelor of Science in Architecture</h3>
+      <p class="edu-school">Belgorod State Technological University (BSTU) &middot; Belgorod, Russia</p>
+      <p class="edu-detail">June 2018</p>
+    </div>
+  </div>
+  <div class="cert-list">
+    <h3>Certifications &amp; Training</h3>
+    <div class="cert-items">
+      <span class="cert-item">Certificate in Construction Project Management &middot; Columbia University, New York</span>
+      <span class="cert-item">Affordable Housing Development Training &middot; GREDA, Ghana</span>
+      <span class="cert-item">Associate Member &middot; AIA (American Institute of Architects)</span>
+      <span class="cert-item">OSHA Safety Certified</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div>
+    <h2>Let's build <em>something</em><br>remarkable.</h2>
+    <p>Available for freelance commissions, full-time opportunities, and collaborative projects in sustainable architecture and construction management.</p>
+  </div>
+  <div class="contact-links">
+    <a class="contact-item" href="mailto:amtijaniarcb@gmail.com">
+      <div>
+        <p class="contact-item-label">Email</p>
+        <p class="contact-item-value">amtijaniarcb@gmail.com</p>
+      </div>
+    </a>
+    <a class="contact-item" href="tel:+14052408928">
+      <div>
+        <p class="contact-item-label">Phone</p>
+        <p class="contact-item-value">405.240.8928</p>
+      </div>
+    </a>
+    <a class="contact-item" href="https://www.behance.net/muhammadtj" target="_blank" rel="noopener">
+      <div>
+        <p class="contact-item-label">Behance Portfolio</p>
+        <p class="contact-item-value">behance.net/muhammadtj</p>
+      </div>
+    </a>
+    <a class="contact-item" href="https://www.linkedin.com/in/muhammad-tijani-abubakar-assoc-aia-33b6031b5/" target="_blank" rel="noopener">
+      <div>
+        <p class="contact-item-label">LinkedIn</p>
+        <p class="contact-item-value">Muhammad Tijani Abubakar, Assoc. AIA</p>
+      </div>
+    </a>
+    <div class="contact-item" style="cursor:default;">
+      <div>
+        <p class="contact-item-label">Location</p>
+        <p class="contact-item-value">Oklahoma, USA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2026 Muhammad Tijani Abubakar, Assoc. AIA</p>
+  <p>Architect &middot; Engineer &middot; Construction Manager</p>
+</footer>
+
+</body>
+</html>
